@@ -187,12 +187,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae09c86ad1122e5d0006ac98d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spring: 500
+  spring: 0
   damper: 5
   drag: 10
   angularDrag: 5
   distance: 0
-  attachToCenterOfMass: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

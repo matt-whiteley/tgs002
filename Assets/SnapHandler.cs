@@ -21,7 +21,7 @@ public class SnapHandler : MonoBehaviour {
 			}
 		}
 		if (Input.GetMouseButtonUp (0)) {
-			this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+			//this.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
 			this.transform.Find ("Model").transform.localPosition = Vector3.zero;
 			this.transform.position = new Vector3(Mathf.Round(this.transform.position.x), 0.0f, Mathf.Round(this.transform.position.z));

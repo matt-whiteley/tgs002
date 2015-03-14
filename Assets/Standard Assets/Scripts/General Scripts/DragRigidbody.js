@@ -5,6 +5,9 @@ var angularDrag = 5.0;
 var distance = 0.2;
 
 private var springJoint : SpringJoint;
+private var atLeastOneFrame = false;
+
+private var tile : Rigidbody = null;
 
 function Update ()
 {
@@ -21,7 +24,7 @@ function Update ()
 		// We need to hit a rigidbody that is not kinematic
 		if (!hit.rigidbody || hit.rigidbody.isKinematic)
 			return;
-		
+		tile = hit.rigidbody;
 		if (!springJoint)
 		{
 			var go = new GameObject("Rigidbody dragger");
@@ -42,33 +45,43 @@ function Update ()
 		StartCoroutine ("DragObject", hit.distance);
 	}
 	
-	if(springJoint && springJoint.connectedBody){
+	if(springJoint && tile){
+		Debug.Log("about to drag");
 		DragObject();
+		atLeastOneFrame = true;
 	}
 	
-	
+	//Debug.Log(atLeastOneFrame);
 }
 
 function DragObject ()
 {
+	//Debug.Log(atLeastOneFrame);
+
 	var oldDrag = springJoint.connectedBody.drag;
 	var oldAngularDrag = springJoint.connectedBody.angularDrag;
 	springJoint.connectedBody.drag = drag;
 	springJoint.connectedBody.angularDrag = angularDrag;
-	var mainCamera = FindCamera();
+	
+	
 	
 	var ray = GetWorldPositionOnPlane (Input.mousePosition, 0);
 	springJoint.transform.position = ray;//new Vector3(ray.x,0,ray.y); //ray.GetPoint(distance);
-		
+	tile.transform.position = ray;
 		
 		
 	
-	if (springJoint.connectedBody && Input.GetMouseButtonUp(0)) 
+	if (Input.GetMouseButtonDown(0) && atLeastOneFrame) 
 	{
 		springJoint.connectedBody.drag = oldDrag;
 		springJoint.connectedBody.angularDrag = oldAngularDrag;
 		springJoint.connectedBody = null;
+		tile = null;
+		
+		atLeastOneFrame = false;
+		return;
 	}
+	
 }
 
 function FindCamera ()
