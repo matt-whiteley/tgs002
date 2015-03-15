@@ -31,6 +31,8 @@ public class DragHandler : MonoBehaviour {
 		if(tile){
 			//Debug.Log("about to drag");
 
+			rotateonRightClick();
+
 			atLeastOneFrame = DragObject();
 		}
 
@@ -71,7 +73,16 @@ public class DragHandler : MonoBehaviour {
 		return ray.GetPoint(distance); // return 3D coordinates at 'distance' along ray
 	}
 
+
 	Vector3 ClampToGrid(Vector3 point){
 		return new Vector3 (Mathf.Round (point.x), 0.0f, Mathf.Round (point.z));
 	}
+
+	void rotateonRightClick () {
+		if (Input.GetMouseButtonDown (1)) {
+			transform.Rotate (0, 90, 0);
+		}
+	}
+
+
 }
