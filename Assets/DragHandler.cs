@@ -24,6 +24,8 @@ public class DragHandler : MonoBehaviour {
 		if(tile){
 			Debug.Log("about to drag");
 
+			rotateonRightClick();
+
 			atLeastOneFrame = DragObject();
 		}
 
@@ -50,4 +52,12 @@ public class DragHandler : MonoBehaviour {
 		
 		return ray.GetPoint(distance); // return 3D coordinates at 'distance' along ray
 	}
+
+	void rotateonRightClick () {
+		if (Input.GetMouseButtonDown (1)) {
+			transform.Rotate (0, 90, 0);
+		}
+	}
+
+
 }
