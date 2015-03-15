@@ -232,6 +232,10 @@ Prefab:
       propertyPath: m_Name
       value: Tile 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2334210, guid: 85abd6560c33d2f4fa4b6ba2ba8f7c20, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d0a021ddb6b94c2593a9c560a34ed07, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85abd6560c33d2f4fa4b6ba2ba8f7c20, type: 2}
   m_IsPrefabParent: 0
@@ -359,6 +363,7 @@ GameObject:
   - 124: {fileID: 1078872891}
   - 81: {fileID: 1078872890}
   - 143: {fileID: 1078872895}
+  - 114: {fileID: 1078872896}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -425,8 +430,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1078872889}
-  m_LocalRotation: {x: .469033867, y: 0, z: 0, w: .883180201}
-  m_LocalPosition: {x: 0, y: 10, z: -6.80000019}
+  m_LocalRotation: {x: .433330983, y: .337978423, z: -.179491594, w: .815952003}
+  m_LocalPosition: {x: -6.55000019, y: 10, z: -5.96000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -448,3 +453,15 @@ CharacterController:
   m_SkinWidth: .0799999982
   m_MinMoveDistance: .00100000005
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1078872896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1078872889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db83e456b98b84f338a69623022d6af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
