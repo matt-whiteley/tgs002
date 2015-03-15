@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class DragHandler : MonoBehaviour {
-	public GameObject draggable = null;
+	public GameObject tileObject = null;
 	public Rigidbody tile = null;
 
 	public bool atLeastOneFrame = false;
@@ -26,12 +26,15 @@ public class DragHandler : MonoBehaviour {
 			if (!hit.rigidbody || hit.rigidbody.isKinematic) return;
 
 			tile = hit.rigidbody;
+			tileObject = tile.gameObject;
+
+			LiftOnSelect();
 		}
 
 		if(tile){
 			//Debug.Log("about to drag");
 
-			rotateonRightClick();
+			RotateOnRightClick();
 
 			atLeastOneFrame = DragObject();
 		}
@@ -58,6 +61,7 @@ public class DragHandler : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0) && atLeastOneFrame) {
 			tile = null;			
 			//atLeastOneFrame = false;
+			DropOnDeselect();
 			return false;
 		}
 		return true;
@@ -78,10 +82,20 @@ public class DragHandler : MonoBehaviour {
 		return new Vector3 (Mathf.Round (point.x), 0.0f, Mathf.Round (point.z));
 	}
 
-	void rotateonRightClick () {
+	void RotateOnRightClick () {
 		if (Input.GetMouseButtonDown (1)) {
 			transform.Rotate (0, 90, 0);
 		}
+	}
+
+	void LiftOnSelect(){
+		tileObject.transform.Find ("Model").transform.localPosition = new Vector3(0f, 10.0f, 0f);
+		tileObject.GetComponent<Renderer>().enabled = true;
+	}
+
+	void DropOnDeselect(){
+		tileObject.transform.Find ("Model").transform.localPosition = new Vector3 (0f, 0f, 0f);
+		tileObject.GetComponent<Renderer> ().enabled = false;
 	}
 
 
