@@ -115,6 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   draggable: {fileID: 0}
+  tile: {fileID: 0}
+  atLeastOneFrame: 0
 --- !u!4 &195678203
 Transform:
   m_ObjectHideFlags: 0
@@ -298,10 +300,6 @@ Prefab:
     - target: {fileID: 462502, guid: 85abd6560c33d2f4fa4b6ba2ba8f7c20, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11462500, guid: 85abd6560c33d2f4fa4b6ba2ba8f7c20, type: 2}
-      propertyPath: spring
-      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85abd6560c33d2f4fa4b6ba2ba8f7c20, type: 2}
