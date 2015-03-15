@@ -18,6 +18,21 @@ public class GridManager : MonoBehaviour {
 		
 	}
 
+	public bool AddTileToGrid(Vector3 key, GameObject tile){
+		Tuple newKey = ConvertCoords(key);
+
+		if (gameBoard.ContainsKey (newKey)) {
+			return false;
+		} else {
+			gameBoard.Add (newKey, tile);
+		}
+		return true;
+	}
+		  
+	private Tuple ConvertCoords(Vector3 input){
+		return new Tuple ((int)input.x, (int)input.z);
+	}
+
 
 }
 

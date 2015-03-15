@@ -10,8 +10,11 @@ public class DragHandler : MonoBehaviour {
 	private Vector3 currentTarget;
 	private float perc = 0;
 
+	public GridManager gridManager;
+
 	void Start(){
 		currentTarget = this.transform.position;
+		gridManager = (GridManager) GameObject.Find("GameManager").GetComponent(typeof(GridManager));
 	}
 
 	void Update () {
@@ -32,7 +35,6 @@ public class DragHandler : MonoBehaviour {
 		}
 
 		if(tile){
-			//Debug.Log("about to drag");
 
 			RotateOnRightClick();
 
@@ -59,8 +61,7 @@ public class DragHandler : MonoBehaviour {
 		tile.transform.position = Vector3.Lerp (tile.transform.position, ClampToGrid(ray), perc);
 
 		if (Input.GetMouseButtonDown(0) && atLeastOneFrame) {
-			tile = null;			
-			//atLeastOneFrame = false;
+			tile = null;
 			DropOnDeselect();
 			return false;
 		}
